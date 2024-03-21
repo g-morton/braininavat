@@ -64,14 +64,14 @@ height: 100%;
     bubble.classList.add('bubble');
     document.querySelector('.logo').appendChild(bubble); // Append bubble to logo container
 
-    const size = Math.random() * 40 + 5 + 'px'; // Bubble size between 20px and 80px
+    const size = Math.random() * 50 + 5 + 'px'; // Bubble size between 20px and 80px
     bubble.style.width = size;
     bubble.style.height = size;
 
     // Ensure bubble is created within the bounds of the logo container
-    bubble.style.left = Math.random() * (350 - parseInt(size)) + 'px';
+    bubble.style.left = Math.random() * (300 - parseInt(size)) + 'px';
 
-    const duration = Math.random() * 5 + 5 + 's'; // Duration between 5s and 10s
+    const duration = Math.random() * 10 + 5 + 's'; // Duration between 5s and 10s
     bubble.style.animation = `floatUp ${duration} linear infinite`;
 
     bubbleCount++; // Increment current bubble count
