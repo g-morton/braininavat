@@ -22,14 +22,57 @@
       opacity: 1;
     }
   }
+@keyframes floatUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-110vh); /* Ensures bubbles float all the way up off-screen */
+    }
+  }
 
   .logo {
     width: 300px;
     animation: fadeIn 2s ease-in forwards;
   }
+
+.bubble {
+    position: absolute;
+    bottom: -100px; /* Start off-screen */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white bubbles */
+    border-radius: 50%;
+  }
+ 
 </style>
 </head>
-<body>
-<img src="/inc/images/logo.png" alt="Brain in a vat logo" class="logo">
+
+  <script>
+  function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    document.body.appendChild(bubble);
+
+    const size = Math.random() * 60 + 20 + 'px'; // Bubble size between 20px and 80px
+    bubble.style.width = size;
+    bubble.style.height = size;
+
+    bubble.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+
+    const duration = Math.random() * 5 + 5 + 's'; // Duration between 5s and 10s
+    bubble.style.animation = `floatUp ${duration} linear infinite`;
+
+    // Remove bubble after it's animated to keep the DOM clean
+    bubble.addEventListener('animationend', function() {
+      bubble.remove();
+    });
+  }
+
+  setInterval(createBubble, 300); // Create a new bubble every 300ms
+</script>
+  
+  
+  
+  <body>
+<img src="./inc/images/logo.png" alt="Brain in a vat logo" class="logo">
 </body>
 </html>
