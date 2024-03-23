@@ -29,21 +29,26 @@ height: 100%;
       transform: translateY(0);
     }
     100% {
-      transform: translateY(-110vh); /* Ensures bubbles float all the way up off-screen */
+      transform: translateY(-110vh);
     }
   }
 
-.logo {
+.logo-container {
     position: relative;
-    width: 350px; /* Logo container width */
-    height: 300px; /* Logo container height */
+    width: 350px;
+    height: 300px; 
   animation: fadeIn 2s ease-in forwards;
   }
+  .logo-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
   
 
 .bubble {
     position: absolute;
-    bottom: -100px; /* Start off-screen */
+    bottom: -100px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
   }
@@ -62,16 +67,16 @@ height: 100%;
 
     const bubble = document.createElement('div');
     bubble.classList.add('bubble');
-    document.querySelector('.logo').appendChild(bubble); // Append bubble to logo container
+    document.querySelector('.logo-container').appendChild(bubble); // Append bubble to logo container
 
-    const size = Math.random() * 50 + 5 + 'px'; // Bubble size between 20px and 80px
+    const size = Math.random() * 50 + 5 + 'px'; // Bubble size
     bubble.style.width = size;
     bubble.style.height = size;
 
     // Ensure bubble is created within the bounds of the logo container
     bubble.style.left = Math.random() * (300 - parseInt(size)) + 'px';
 
-    const duration = Math.random() * 10 + 5 + 's'; // Duration between 5s and 10s
+    const duration = Math.random() * 15 + 5 + 's';
     bubble.style.animation = `floatUp ${duration} linear infinite`;
 
     bubbleCount++; // Increment current bubble count
@@ -83,7 +88,7 @@ height: 100%;
     });
   }
 
-  setInterval(createBubble, 600); // Create a new bubble every 300ms
+  setInterval(createBubble, 600); // Create a new bubble every n ms
 </script>
   
   
@@ -91,7 +96,7 @@ height: 100%;
   <body>
 
 
-<div class="logo">
+<div class="logo-container">
   <img src="./inc/images/logo.png" alt="Brain in a vat logo"><br />
   <img src="./inc/images/braininavat-logo.png" alt="Brain in a vat logo text">
 </div>
